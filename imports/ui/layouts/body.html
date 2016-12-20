@@ -6,7 +6,11 @@
       </div>
     </header>
     <div id="main">
-      {{> postsList}}
+      {{> layout}}
     </div>
   </div>
 </body>
+
+<template name="layout">
+  {{> Template.dynamic template=main}}
+</template>
