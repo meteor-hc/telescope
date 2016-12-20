@@ -1,21 +1,13 @@
 import { Template } from 'meteor/templating'
+import { Posts } from '/imports/api/posts.js'
+import { Meteor } from 'meteor/meteor'
 import './posts_list.html'
 import './post_item.js'
 
-const postsData = [
-  {
-    title: 'Introducing Telescope',
-    url: 'http://sachagreif.com/introducing-telescope/'
-  },
-  {
-    title: 'Meteor',
-    url: 'http://meteor.com'
-  },
-  {
-    title: 'The Meteor Book',
-    url: 'http://themeteorbook.com'
-  }
-]
+Template.postsList.onCreated(() => {
+  Meteor.subscribe('posts')
+})
+
 Template.postsList.helpers({
-  posts: postsData
+  posts: Posts.find()
 })
